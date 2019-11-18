@@ -68,11 +68,11 @@ RUN cp /usr/bin/php7 /usr/bin/php \
   && mkdir -p /usr/src/app \
   && chown -R apache:apache /usr/src/app 
 
+COPY entrypoint.sh /entrypoint.sh
+
 WORKDIR /usr/src/app
 
 VOLUME /usr/src/app
-
-COPY entrypoint.sh /entrypoint.sh
 
 CMD ["/entrypoint.sh"]
 
