@@ -1,4 +1,5 @@
 #!/bin/sh
+APACHE_SERVER_NAME=localhost
 
 rm -f /run/apache2/apache2.pid
 rm -f /run/apache2/httpd.pid

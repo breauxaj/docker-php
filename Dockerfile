@@ -17,6 +17,10 @@ RUN apk update && apk upgrade \
   php7-phar \
   tzdata  
 
+RUN curl -sOL https://getcomposer.org/composer.phar \
+  && mv composer.phar /usr/local/bin/composer \
+  && chmod +x /usr/local/bin/composer
+
 RUN apk add php7-bcmath \
   php7-bz2 \
   php7-dom \
@@ -38,7 +42,7 @@ RUN apk add php7-bcmath \
   php7-odbc \
   php7-opcache \
   php7-pdo \
-  php7-pdb_dblib \
+  php7-pdo_dblib \
   php7-pdo_mysql \
   php7-pdo_odbc \
   php7-pdo_pgsql \
@@ -59,10 +63,10 @@ RUN apk add php7-bcmath \
 
 RUN apk add php7-simplexml
 
-RUN ln -s /usr/bin/php7 /usr/bin/php
+RUN cp /usr/bin/php7 /usr/bin/php \
   && rm -rf /var/cache/apk/* \
   && mkdir -p /usr/src/app \
-  && chown -R apache:apache
+  && chown -R apache:apache /usr/src/app 
 
 WORKDIR /usr/src/app
 
@@ -71,3 +75,5 @@ VOLUME /usr/src/app
 COPY entrypoint.sh /entrypoint.sh
 
 CMD ["/entrypoint.sh"]
+
+EXPOSE 80
