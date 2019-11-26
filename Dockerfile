@@ -1,7 +1,6 @@
-FROM alpine:latest
+FROM breauxaj/alpine:latest
 
-RUN apk update && apk upgrade \
-  && apk add apache2 \
+RUN apk add apache2 \
   ca-certificates \
   curl \
   git \
