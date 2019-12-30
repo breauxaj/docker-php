@@ -14,13 +14,8 @@ RUN apk add apache2 \
   php7-json \
   php7-openssl \
   php7-phar \
-  tzdata  
-
-RUN curl -sOL https://getcomposer.org/composer.phar \
-  && mv composer.phar /usr/local/bin/composer \
-  && chmod +x /usr/local/bin/composer
-
-RUN apk add php7-bcmath \
+  tzdata \
+  && apk add php7-bcmath \
   php7-bz2 \
   php7-dom \
   php7-ctype \
@@ -58,12 +53,15 @@ RUN apk add php7-bcmath \
   php7-xmlreader \
   php7-xmlrpc \
   php7-xmlwriter \
-  php7-zip
+  php7-zip \
+  && apk add php7-simplexml
+  && rm -rf /var/cache/apk/* \
 
-RUN apk add php7-simplexml
+RUN curl -sOL https://getcomposer.org/composer.phar \
+  && mv composer.phar /usr/local/bin/composer \
+  && chmod +x /usr/local/bin/composer
 
 RUN cp /usr/bin/php7 /usr/bin/php \
-  && rm -rf /var/cache/apk/* \
   && mkdir -p /usr/src/app \
   && chown -R apache:apache /usr/src/app 
 
@@ -76,3 +74,10 @@ VOLUME /usr/src/app
 CMD ["/entrypoint.sh"]
 
 EXPOSE 80
+
+LABEL org.opencontainers.image.vendor="Breaux Heavy Industries" \
+	org.opencontainers.image.url="https://breaux.io" \
+	org.opencontainers.image.title="PHP7" \
+	org.opencontainers.image.description="Apache httpd with PHP" \
+	org.opencontainers.image.version="v0.0.1" \
+	org.opencontainers.image.documentation="https://docs.breaux.io"
