@@ -44,7 +44,6 @@ RUN apk add apache2 \
   php7-posix \
   php7-redis \
   php7-session \
-  php7-simplexml \
   php7-sqlite3 \
   php7-soap \
   php7-tokenizer \
