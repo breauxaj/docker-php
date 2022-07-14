@@ -54,8 +54,8 @@ RUN apk add apache2 \
   php7-xmlrpc \
   php7-xmlwriter \
   php7-zip \
-  && apk add php7-simplexml
-  && rm -rf /var/cache/apk/* \
+  && apk add php7-simplexml \
+  && rm -rf /var/cache/apk/* 
 
 RUN curl -sOL https://getcomposer.org/composer.phar \
   && mv composer.phar /usr/local/bin/composer \
