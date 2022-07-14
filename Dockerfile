@@ -35,6 +35,7 @@ RUN apk add apache2 \
   php8-odbc \
   php8-opcache \
   php8-pecl-mcrypt \
+  php8-pecl-xmlrpc \
   php8-pdo \
   php8-pdo_dblib \
   php8-pdo_mysql \
